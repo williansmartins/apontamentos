@@ -1,0 +1,48 @@
+#login {
+  /*RESET*/
+}
+#login .help-block {
+  color: red;
+}
+#login .form-signin {
+  -moz-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+#login .form-signin.ng-hide {
+  margin-left: 200px;
+}
+#login .form-signin .titulo {
+  color: #3479b8;
+}
+#login .alert {
+  margin-top: 40px;
+}
+#login #meio {
+  width: 300px;
+  margin: 0 auto;
+}
+#login #meio h2 {
+  text-align: center;
+}
+#login #meio .btn.acoes {
+  width: 100%;
+  height: 43px;
+}
+#login #meio #message {
+  text-align: center;
+  color: red;
+}
+#login .col-md-1,
+#login .col-md-2,
+#login .col-md-3,
+#login .col-md-4,
+#login .col-md-5,
+#login .col-md-6,
+#login .col-md-7,
+#login .col-md-8,
+#login .col-md-9,
+#login .col-md-10,
+#login .col-md-11,
+#login .col-md-12 {
+  float: unset;
+}
