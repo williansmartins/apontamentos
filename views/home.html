@@ -1,0 +1,154 @@
+ <div id="home" ng-cloak>
+    <div class="wrapper">
+        <header>
+            <h2>{{titulo}} 
+                <a href="javascript:void(0)">
+                    <i class="fas fa-sort" 
+                        ng-if="(tela==3) || (tela==6)"
+                        ng-click="reordenar()"></i>
+                </a>
+                <a href="javascript:void(0)">
+                    <i class="fas fa-print" 
+                        ng-show="(tela==3) || (tela==6)"
+                        ng-click="flagRelatorio = !flagRelatorio"></i>
+                </a>
+            </h2>
+            <pre class="hide">{{sucesso}}</pre>
+            <pre class="hide">{{}}</pre>
+        </header>
+        <section ng-if="tela==1" class="ponto" >
+            <img ng-show="!sucesso" src="imagens/fingerprint2.jpg" width="100px" ng-click="verificarDescricao()"/>
+            <img ng-show="sucesso" src="imagens/success.png" width="100px" />
+        </section>
+        <section ng-if="tela==2" class="dia">
+            <button type="button" class="btn btn-primary btn-sm hora" ng-if="apontamentosDoDia">
+              Total <span class="badge badge-pill badge-light ng-binding">{{apontamentosDoDia.total}} h</span>
+            </button>
+            <ul>
+                <li ng-repeat="(key, value) in apontamentosDoDia">
+                    <a href="javascript:void(0)">
+                        <i class="fas fa-pencil-alt" ng-click="editar(value)"  data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false"></i>
+                        <span ng-click="editar(value)" data-toggle="modal" data-target="#myModal">{{value.ponto | date:'HH:mm'}}</span>
+                        <i class="fas fa-times" ng-click="deletar(value.id)"></i>
+                    </a>
+                </li>
+            </ul>
+
+
+            <span class="hora hide" ng-if="apontamentosDoDia">
+                {{apontamentosDoDia.total}} h
+            </span>
+        </section>
+        <section ng-if="(tela==3) || (tela==6)" class="mes">
+            <ul class="itens" ng-if="!flagRelatorio">
+                <li class="item" ng-repeat="(key, value)  in todosApontamentos | toArray | orderBy:value[0]">
+                    <a href="javascript:void(0)">
+                        <span class="data hide" ng-click="editar(value)">key: {{key}}</span>
+                        <span class="data hide" ng-click="editar(value)">value: {{value}}+</span>												
+                        <span class="data">{{value[0] | date:'dd/MM/yyyy'}}</span>
+						<span class="data hide">{{value[0]}}</span>
+						<span class="horas">
+                            <span class="hora " ng-click="editar(h)" data-toggle="modal" data-target="#myModal" ng-repeat="h in value[1]">
+                                {{h.valor | date:'HH:mm'}}
+                            </span>
+                        </span>
+                        <br>
+                        
+                        <button type="button" class="btn btn-primary btn-sm">
+                          Total <span class="badge badge-pill badge-light">{{value.total}}h</span>
+                        </button>
+						<span class="total" ng-click="editarDescricao(value)"  data-toggle="modal" data-target="#modalDescricao" >:: {{value.descricao.descricao}} </span>
+                        <button type="button" class="btn btn-success btn-sm previsao hide" disabled>
+                          Previsão: <span class="badge badge-pill badge-light">até as 19:30</span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm hide" disabled>
+                          R$: <span class="badge badge-pill badge-light">450</span>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="relatorio" ng-if="flagRelatorio">
+                <a href="javascript:void(0)" class="btn btn-primary export" ng-click="exportar()">Exportar para CSV</a>
+                <a id='dwnldLnk' download='arquivo.xls' style="display:none;" /> 
+
+                <table class="table table-striped table-hover" border="1">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Data</th>
+                        <th scope="col" colspan="4">Apontamentos</th>
+                        <th scope="col">Descrição</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  ng-repeat="(key, value)  in todosApontamentos | toArray | orderBy:value[0]">
+                        <th>{{key+1}}</th>
+                        <td>{{value[0] | date:'dd/MM/yyyy'}}</td>
+                        <td ng-repeat="h in value[1]">
+                            {{h.valor | date:'HH:mm'}}
+                        </td>
+                        <td>{{value.descricao.descricao}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+        <nav>
+            <ul>
+                <li ng-click="mudarTela(1)" ng-class="{'ativado' : tela==1}" class="ponto"><a href="javascript:void(0)"><i class="fas fa-fingerprint"></i></a></li>
+                <li ng-click="mudarTela(2)" ng-class="{'ativado' : tela==2}" class="hoje"><a href="javascript:void(0)"><i class="fas fa-clock"></i></a></li>
+                <li ng-click="mudarTela(3)" ng-class="{'ativado' : tela==3}" class="mes"><a href="javascript:void(0)"><i class="fas fa-align-justify"></i></a></li>
+                <li ng-click="mudarTela(6)" ng-class="{'ativado' : tela==6}" class="mes"><a href="javascript:void(0)"><i class="fas fa-calendar-alt"></i></a></li>
+                <li ng-click="sair()" class="sair"><a href="javascript:void(0)"><i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Modais -->
+    <div>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+
+              <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="modalDimiss()">&times;</button>
+                        <h4 class="modal-title">Ajuste de ponto</h4>
+                    </div>
+                    <div class="modal-body"> 
+                        <section class="edicao">
+                            <input class="ponto" ng-model="entidadeSelecionada.ponto"></input>   
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-success" ng-click="salvar()" data-dismiss="modal">Salvar</a>         
+                        <a class="btn btn-danger" ng-click="deletar(entidadeSelecionada.id)" data-dismiss="modal">Excluir</a>         
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+        <div id="modalDescricao" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Ajuste de descrição</h4>
+                    </div>
+                    <div class="modal-body"> 
+                        <section class="edicaoDescricao">
+                            <textarea class="ponto" ng-model="descricaoSelecionada.descricao"></textarea>   
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-success" ng-click="salvarDescricao()" data-dismiss="modal">Salvar</a>         
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ </div> 
+

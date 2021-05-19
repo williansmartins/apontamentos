@@ -1,0 +1,132 @@
+#home header {
+  border-bottom: solid 1px #E1E1E1;
+  background-color: #F8F8F8;
+  height: 44px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+#home header h2 {
+  margin: 0px;
+  text-align: center;
+  color: #4C4C4C;
+  font-size: 20px;
+  padding-top: 10px;
+}
+#home section {
+  background-color: #fff;
+  text-align: center;
+  padding: 60px 0px;
+}
+#home section.edicao {
+  text-align: center;
+  font-size: 22px;
+  padding: 0px 0px;
+}
+#home section.edicao .ponto {
+  text-align: center;
+}
+#home section.edicaoDescricao .ponto {
+  width: 100%;
+  height: 100px;
+}
+#home section.mes li {
+  border-bottom: solid 1px #19152d;
+  text-align: left;
+}
+#home section.mes a {
+  font-size: 20px;
+  margin: 11px auto;
+  display: block;
+  width: 304px;
+  position: relative;
+}
+#home section.mes a .total {
+  font-size: 15px;
+}
+#home section.mes a .data {
+  color: gray;
+  font-size: 20px;
+  line-height: 14px;
+  position: absolute;
+  top: 3px;
+  border-left: solid 5px;
+  padding-left: 4px;
+}
+#home section.mes a .horas {
+  margin-left: 120px;
+  position: absolute;
+}
+#home section.mes a .horas .hora {
+  color: #ffffff;
+  margin: 0px 3px;
+  font-size: 11px;
+  padding: 6px;
+  background-color: #337ab7;
+  border-radius: 12px;
+  line-height: 8px;
+  float: right;
+}
+#home section.mes a .previsao {
+  width: 216px;
+}
+#home section.dia .hora {
+  color: #ffffff;
+  font-size: 18px;
+  background-color: #337ab7;
+  width: 200px;
+}
+#home section ul {
+  padding: 0;
+}
+#home section ul li {
+  list-style: none;
+}
+#home section ul li a {
+  font-size: 35px;
+  text-decoration: none;
+}
+#home section ul li a .fa-pencil-alt {
+  color: #00d008;
+  margin-right: 20px;
+}
+#home section ul li a .fa {
+  font-size: 30px;
+}
+#home section ul li a .fa-times {
+  color: red;
+  margin-left: 20px;
+}
+#home nav {
+  border-top: solid 1px #F0EFF5;
+  background-color: #F8F8F8;
+  height: 49px;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  text-align: center;
+}
+#home nav ul {
+  margin: 0px;
+  padding: 0px;
+  margin: 0 auto;
+}
+#home nav ul li {
+  width: 60px;
+  height: 45px;
+  display: inline-block;
+  background-position: 70px -26px;
+  text-align: center;
+}
+#home nav ul li a {
+  margin: 0px;
+  padding: 0px;
+}
+#home nav ul li a i {
+  color: gray;
+  font-size: 32px;
+  padding-top: 8px;
+}
+#home nav ul li.ativado a i {
+  color: #0070ff;
+}

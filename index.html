@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Index</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <!-- tell iOS devices that this app can work in full screen mode. No need for navbars -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <!-- link the app icons that will be shown on the home screen (iPhone, iPhone4 and iPad) -->
+        <link rel="apple-touch-icon" sizes="57x57"href="imagens/touch-icon-iphone.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="imagens/touch-icon-ipad.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="imagens/touch-icon-iphone4.png" />
+        <!-- link the start screen image - shown while the app launches -->
+        <link rel="apple-touch-startup-image" href="imagens/startscreen-320x460.png">
+        
+        <!-- CSS VENDOR -->
+        <link href="css/vendor/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="css/vendor/normalize/normalize.css" rel="stylesheet">
+        <!-- <link href="css/vendor/fonts/awesome/all.min.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+
+        <!-- CSS MINE -->
+        <link href="css/global.css" rel="stylesheet">
+        <link href="css/index.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
+        <link href="css/modal-mensagem.css" rel="stylesheet">
+
+        <!-- JS VENDOR -->
+        <script src="javascript/vendor/js-date-format/js-date-format.js"></script>
+        <script src="javascript/vendor/jquery/jquery.min.js"></script>
+        <script src="javascript/vendor/bootstrap/bootstrap.min.js"></script>
+        
+        <script src="javascript/vendor/angular/angular-1.5.8.js"></script>
+        <script src="javascript/vendor/angular/angular-sanitize.js"></script>
+        <script src="javascript/vendor/angular/ui-bootstrap-tpls-2.2.0.js"></script>
+        <script src="javascript/vendor/angular/angular-route.js"></script>
+        <script src="javascript/vendor/angular-base64/angular-base64.js"></script>
+        <script src="javascript/vendor/ng-storage/ngStorage.js"></script>
+        <script src="javascript/vendor/angular-logger/angular-logger.min.js"></script>
+		
+        <script src="javascript/vendor/angular-input-masks/angular-input-masks-standalone.min.js"></script> 
+        <script src="javascript/vendor/angular-input-masks/angular-locale_pt-br.js"></script>
+
+        <!-- JS MINE -->
+        <script src="javascript/app.js"></script>
+        <script src="javascript/routes.js"></script>
+        <script src="javascript/config.js"></script>
+
+        <!-- MODULES -->
+        <script src="javascript/controllers/login-controller.js"></script>
+        <script src="javascript/servicos/home-service.js"></script>
+        <script src="javascript/controllers/home-controller.js"></script>
+        <script src="javascript/controllers/navegador-controller.js"></script>
+        <script src="javascript/servicos/login-service.js"></script>
+        <script src="javascript/diretivas/global-directive.js"></script>
+        <script src="javascript/filtros/global-filters.js"></script>
+        <script src="javascript/servicos/log/log-service.js"></script> 
+        <script src="javascript/servicos/session/session-service.js"></script>
+
+        <!-- MODAIS -->
+        <script src="javascript/componentes/component-modal.js"></script>
+        <script src="javascript/controllers/global/modal-default-controller.js"></script>
+        <script src='https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js'></script>
+		<script src="https://momentjs.com/downloads/moment.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/pt-br.js"></script>
+
+    </head>
+    <body ng-app="controlei" id="index">
+        <div class="base">
+            <div class="loading-wrapper" loading>
+                <div class="loading"></div>
+                <div class="overlay2"></div>
+            </div>    
+            <div ng-view class="view"></div>
+        </div>
+    </body>
+</html>
