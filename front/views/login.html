@@ -1,0 +1,79 @@
+ <div id="login" class="container-fluid">
+	<div id="meio" class="">
+		<form class="form-signin" name="formulario" autocomplete="nope" novalidate>
+			<h3 class="titulo center" ng-if="flagMostrarLogin" ng-click="popularEmail()">Login</h3>
+			<h3 class="titulo center" ng-if="!flagMostrarLogin">Cadastro</h3>
+
+			<!-- Text input-->
+			<div class="form-group" ng-show="!flagMostrarLogin">
+				<label class="col-md-12 control-label" for="nome">Nome:</label> 
+				<div class="col-md-12">
+					<input name="nome" type="text" class="form-control input-md" ng-model="form.name" autocomplete="new-password">
+					<span class="help-block" ng-show="formulario.name.$touched && formulario.name.$invalid">Preencha corretamente este campo</span>  
+				</div>
+			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-12 control-label" for="email">Email:</label> 
+				<div class="col-md-12">
+					<input name="email" type="email" class="form-control input-md" ng-model="form.email" ng-required="true" autocomplete="new-password">
+					<span class="help-block" ng-show="formulario.email.$touched && formulario.email.$invalid">Preencha corretamente este campo</span>  
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-12 control-label" for="senha">Senha:</label> 
+				<div class="col-md-12">
+					<input name="senha" type="password" class="form-control input-md" ng-model="form.password" ng-required="true" autocomplete="new-password">
+					<span class="help-block" ng-show="formulario.senha.$touched && formulario.senha.$invalid">Preencha este campo</span>  
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group" ng-show="!flagMostrarLogin">
+				<label class="col-md-12 control-label" for="senha2">Confirmação:</label> 
+				<div class="col-md-12">
+					<input name="senha2" type="password" class="form-control input-md" ng-model="form.password2" ng-required="true">
+					<span class="help-block" ng-show="formulario.senha2.$touched && formulario.senha2.$invalid">Preencha o campo confirmação</span>  
+				</div>
+			</div>
+
+			<div class="form-group" ng-show="flagMostrarLogin" >
+				<div class="col-md-12">
+					<button name="entrar" 
+							class="btn btn-primary btn-block" 
+							ng-disabled="formulario.senha.$invalid || formulario.email.$invalid"
+							ng-click="login()">Entrar</button>
+				</div>
+			</div>
+			
+			<div class="form-group" ng-show="!flagMostrarLogin">
+				<div class="col-md-12">
+				<button name="solicitar" 
+						class="btn btn-primary btn-block" 
+						ng-click="solicitar()"
+						ng-disabled="formulario.$invalid || (form.password != form.password2)">Solicitar</button>
+				</div>
+			</div>
+			<div class="form-group" ng-show="!flagMostrarLogin" >
+				<div class="col-md-12">
+					<button class="btn btn-warning btn-block" 
+							ng-click="flagMostrarLogin=true">Voltar</button>
+				</div>
+			</div>			
+			<div class="form-group" ng-show="flagMostrarLogin">
+				<div class="col-md-12">
+					<button ng-click="flagMostrarLogin=false" name="cadastre" id="cadastre" class="btn btn-success btn-block col-md-6">Cadastre-se</button>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="flagMostrarLogin">
+				<div class="col-md-6 hide">
+					<button name="esqueci" class="btn btn-warning btn-block col-md-6">Esqueci minha senha</button>
+				</div>
+			</div>
+		</form>
+	</div>
+ </div> 
